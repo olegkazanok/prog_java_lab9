@@ -28,19 +28,18 @@ public class NewType extends SimpleTagSupport {
         UserList userList = (UserList) getJspContext().getAttribute("users", PageContext.APPLICATION_SCOPE);
 
         // Проверить, что логин не пустой
-        if (type.getType()==null || type.getType().equals("")) {
+        if (type.getType() == null || type.getType().equals("")) {
             errorMessage = "Select ad type";
         } else {
 
             // Проверить, что имя не пустое
-            if (type.getName()==null || type.getName().equals("")) {
+            if (type.getName() == null || type.getName().equals("")) {
                 errorMessage = "Username cannot be empty!";
             }
         }
         // Если ошибки не было - добавить пользователя
         if (errorMessage==null) {
             try {
-
                 // Непосредственное добавление пользователя делает
                 userList.addUser(type);
 

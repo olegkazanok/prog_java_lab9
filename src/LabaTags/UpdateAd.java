@@ -34,7 +34,7 @@ public class UpdateAd extends SimpleTagSupport {
             errorMessage = " The title cannot be empty!";
         } else {
             // Проверить авторство пользователя - имеет ли он право на редактирование
-            if (currentUser==null || (ad.getId()>0 && ad.getAuthorId()!=currentUser.getId())) {
+            if (currentUser == null || (ad.getId()>0 && ad.getAuthorId()!=currentUser.getId())) {
 
 
                 errorMessage = "You are trying to change a message that you do not have permission to access!";
@@ -42,16 +42,15 @@ public class UpdateAd extends SimpleTagSupport {
         }
 
         // Если ошибки не было - обновить объявление
-        if (errorMessage==null) {
+        if (errorMessage == null) {
 
             // Обновить последнюю дату модификации объявления
             ad.setLastModified(Calendar.getInstance().getTimeInMillis());
 
             // Если id объявлений пустой, то оно создаѐтся
-            if (ad.getId()==0) {
+            if (ad.getId() == 0) {
                 adList.addAd(currentUser, ad);
             } else {
-
                 // Объявление просто обновляется
                 adList.updateAd(ad);
             }

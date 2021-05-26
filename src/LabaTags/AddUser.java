@@ -26,26 +26,25 @@ public class AddUser extends SimpleTagSupport {
     }
 
     public void doTag() throws JspException, IOException {
-
         // Изначально описание ошибки = null (т.е. ошибки нет)
         String errorMessage = null;
+
         // Извлечь из контекста приложения общий список пользователей
         UserList userList = (UserList) getJspContext().getAttribute("users", PageContext.APPLICATION_SCOPE);
 
         // Проверить, что логин не пустой
-        if (user.getLogin()==null || user.getLogin().equals("")) {
+        if (user.getLogin() == null || user.getLogin().equals("")) {
             errorMessage = "Login cannot be empty!";
         } else {
 
             // Проверить, что имя не пустое
-            if (user.getName()==null || user.getName().equals("")) {
+            if (user.getName() == null || user.getName().equals("")) {
                 errorMessage = "Username cannot be empty!";
             }
         }
         // Если ошибки не было - добавить пользователя
-        if (errorMessage==null) {
+        if (errorMessage == null) {
             try {
-
                 // Непосредственное добавление пользователя делает
                 userList.addUser(user);
 
@@ -61,13 +60,4 @@ public class AddUser extends SimpleTagSupport {
         // Сохранить описание ошибки (текст или null) в сессии
         getJspContext().setAttribute("errorMessage", errorMessage,PageContext.SESSION_SCOPE);
     }
-
-
-
-
-
-
-
 }
-
-

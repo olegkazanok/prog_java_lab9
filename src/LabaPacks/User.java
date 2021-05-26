@@ -77,7 +77,6 @@ public class User implements Serializable, Identifiable {
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
